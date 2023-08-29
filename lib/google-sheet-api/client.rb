@@ -14,6 +14,7 @@ module GoogleSheetApi
       'v1 2023-08-29'
     end
 
+    # TODO: Allow sheet id and url
     def get_sheet_data(sheet_url, type: 'csv', limit: REDIRECT_LIMIT, redirect: false)
       url = parse_sheet_url(sheet_url, sheet_export(type), redirect: redirect)
       uri = URI(url)
@@ -48,6 +49,7 @@ module GoogleSheetApi
       end
     end
 
+    # TODO: Possibly combine get_form_inputs and get_post_form_url
     # Returns a hash where the key is the human readable key and the value is the
     # form input identifier
     #
@@ -75,6 +77,7 @@ module GoogleSheetApi
       "https://docs.google.com/forms/d/#{form_id}/formResponse"
     end
 
+    # TODO: Cleanup parameters
     def submit_form(form_url, form_post_url, payload_object:, limit: REDIRECT_LIMIT, redirect: false)
       payload_object = get_form_mapping(form_url, payload_object)
 
